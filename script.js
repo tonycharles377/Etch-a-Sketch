@@ -70,8 +70,8 @@ changeColor();
 document.querySelector('.sketchPad').addEventListener('click', () => {
     click = !click;
     if(click){
-        document.querySelector('.mode').textContent = "Mode: Colring!, click on the sketchpad to stop colorin";
+        document.querySelector('.mode').textContent = "Mode: Colring!, click on the sketchpad to stop coloring";
     }else{
-        document.querySelector('.mode').textContent = "Mode: Not Colring!, click on the sketchpad to start colorin";
+        document.querySelector('.mode').textContent = "Mode: Not Colring!, click on the sketchpad to start coloring";
     }
 })
