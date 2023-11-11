@@ -1,3 +1,5 @@
+let color = 'black';
+
 function generateCells(size){
     const sketchPad = document.querySelector(".sketchPad");
     const cell = sketchPad.querySelectorAll('div');
@@ -7,9 +9,9 @@ function generateCells(size){
 
     for (cellIndex = 0; cellIndex < (size * size); cellIndex++){
         const cell = document.createElement('div');
+        cell.addEventListener('mouseover', colorCell);
         cell.classList.add('cell');
-        cell.style.backgroundColor = "blue";
-        cell.style.border = "1px solid black";
+        cell.style.backgroundColor = "white";
         sketchPad.appendChild(cell);
     }
 }
@@ -26,3 +28,38 @@ function changeSize(input){
 }
 
 changeSize();
+
+function colorCell(){
+    if(color === 'rainbow'){
+        this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+    }else{
+        this.style.backgroundColor = color;
+    }
+}
+
+function changeColor(){
+    const black = document.querySelector('.black');
+    const rainbow = document.querySelector('.rainbow');
+    const erase = document.querySelector('.erase');
+    const clear = document.querySelector('.clear');
+
+    black.addEventListener('click', () => {
+        color = 'black';
+    });
+
+    rainbow.addEventListener('click', () => {
+        color = 'rainbow';
+    });
+
+    erase.addEventListener('click', () => {
+        color = 'white';
+    });
+
+    clear.addEventListener('click', () => {
+        const sketchPad = document.querySelector(".sketchPad");
+        const cell = sketchPad.querySelectorAll('div');
+        cell.forEach((div) => div.style.backgroundColor = 'white');
+    });
+}
+
+changeColor();
