@@ -1,4 +1,5 @@
 let color = 'black';
+let click = true;
 
 function generateCells(size){
     const sketchPad = document.querySelector(".sketchPad");
@@ -30,10 +31,12 @@ function changeSize(input){
 changeSize();
 
 function colorCell(){
-    if(color === 'rainbow'){
-        this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
-    }else{
-        this.style.backgroundColor = color;
+    if (click){
+        if(color === 'rainbow'){
+            this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+        }else{
+            this.style.backgroundColor = color;
+        }
     }
 }
 
@@ -63,3 +66,12 @@ function changeColor(){
 }
 
 changeColor();
+
+document.querySelector('.sketchPad').addEventListener('click', () => {
+    click = !click;
+    if(click){
+        document.querySelector('.mode').textContent = "Mode: Colring!, click on the sketchpad to stop colorin";
+    }else{
+        document.querySelector('.mode').textContent = "Mode: Not Colring!, click on the sketchpad to start colorin";
+    }
+})
