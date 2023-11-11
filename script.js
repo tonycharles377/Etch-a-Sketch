@@ -1,15 +1,23 @@
-const container = document.querySelector('#container');
+function generateCells(size){
+    const sketchPad = document.querySelector(".sketchPad");
+    const cell = sketchPad.querySelectorAll('div');
+    cell.forEach((div) => div.remove());
+    sketchPad.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+    sketchPad.style.gridTemplateRows = `repeat(${size}, 1fr)`;
 
-//create 16 x 16 grid
-function createGrid(rows, colums){
-    container.style.setProperty('--grid-rows', rows);
-    container.style.setProperty('--grid-colums', colums);
-    for (cells = 0; cells < (rows * colums); cells++){ 
-        let cell = document.createElement('div');
-        cell.classList.add('cells');
-        // cell.innerText = (cells + 1);
-        container.appendChild(cell);
+    for (cellIndex = 0; cellIndex < (size * size); cellIndex++){
+        const cell = document.createElement('div');
+        cell.classList.add('cell');
+        cell.style.backgroundColor = "blue";
+        cell.style.border = "1px solid black";
+        sketchPad.appendChild(cell);
     }
 }
 
-createGrid(16, 16);
+generateCells(16);
+
+function changeSize(input){
+    generateCells(input);
+}
+
+changeSize();
