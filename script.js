@@ -17,7 +17,12 @@ function generateCells(size){
 generateCells(16);
 
 function changeSize(input){
-    generateCells(input);
+    if(input >= 2 && input <= 100){
+        generateCells(input);
+    }else{
+        console.log('Enter numbers from 2 to 100');
+    }
+    
 }
 
 changeSize();
