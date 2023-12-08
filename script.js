@@ -75,3 +75,7 @@ document.querySelector('.sketchPad').addEventListener('click', () => {
         document.querySelector('.mode').textContent = "Mode: Not Colring!, click on the sketchpad to start coloring";
     }
 })
+
+document.addEventListener('DOMContentLoaded',function(){
+    alert('Developement in progress!');
+})
